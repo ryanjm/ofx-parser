@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = "== DESCRIPTION:\n\nofx-parser is a ruby library to parse a realistic subset of the lengthy OFX 1.x specification.\n\n== FEATURES/PROBLEMS:\n\n* Reads OFX responses - i.e. those downloaded from financial institutions and\n  puts it into a usable object graph.\n* Supports the 3 main message sets: banking, credit card and investment\n  accounts, as well as the required 'sign on' set.\n* Knows about SIC codes - if your institution provides them.\n  See http://www.eeoc.gov/stats/jobpat/siccodes.html\n* Monetary amounts can be retrieved either as a raw string, or in pennies.\n* Supports OFX timestamps."
   s.email = "andy@tinnedfruit.org"
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.txt"]
-  s.files = ["History.txt", "Manifest.txt", "README.txt", "Rakefile", "lib/mcc.rb", "lib/ofx-parser.rb", "lib/ofx.rb", "test/fixtures/banking.ofx.sgml", "test/fixtures/creditcard.ofx.sgml", "test/fixtures/list.ofx.sgml", "test/fixtures/malformed_header.ofx.sgml", "test/fixtures/with_spaces.ofx.sgml", "test/test_ofx_parser.rb", ".gemtest"]
+  s.files = ["History.txt", "Manifest.txt", "README.txt", "Rakefile", "lib/mcc.rb", "lib/ofx-parser.rb", "lib/ofx.rb", "test/fixtures/banking.ofx.sgml", "test/fixtures/creditcard.ofx.sgml", "test/fixtures/list.ofx.sgml", "test/fixtures/malformed_header.ofx.sgml", "test/fixtures/with_spaces.ofx.sgml", "test/test_ofx_parser.rb"]
   s.homepage = "http://ofx-parser.rubyforge.org/"
   s.rdoc_options = ["--main", "README.txt"]
   s.require_paths = ["lib"]
