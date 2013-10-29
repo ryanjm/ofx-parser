@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'ofx-parser'
+require File.expand_path('../../lib/ofx-parser.rb', __FILE__)
 
 class OfxParserTest < Test::Unit::TestCase
 
