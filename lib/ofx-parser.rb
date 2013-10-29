@@ -4,12 +4,10 @@ require 'time'
 require 'date'
 
 %w(ofx mcc).each do |fn|
-  require File.dirname(__FILE__) + "/#{fn}"
+  require File.dirname(__FILE__) + "/ofx-parser/#{fn}"
 end
 
 module OfxParser
-  VERSION = '1.1.0'
-
   class OfxParser
 
     # Creates and returns an Ofx instance when given a well-formed OFX document,
