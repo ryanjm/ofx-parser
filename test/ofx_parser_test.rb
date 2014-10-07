@@ -455,7 +455,7 @@ class OfxParserTest < Test::Unit::TestCase
 
   def test_for_pennies
     amounts = {
-      '-11.1' => -111,
+      '-11.1' => -1110,
       '-11.110' => -1111,
       '-11.11101' => -1111,
       '11.11' => 1111,

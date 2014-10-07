@@ -16,7 +16,8 @@ module OfxParser
     def pennies_for(amount)
       return nil if amount == ""
       int, fraction = amount.scan(/\d+/)
-      i = (fraction.to_s.strip =~ /[1-9]/) ? "#{int}#{fraction[0,2]}".to_i : int.to_i * 100
+      fraction = fraction.to_s + "00"
+      i = "#{int}#{fraction[0,2]}".to_i
       amount =~ /^\s*-\s*\d+/ ? -i : i
     end
 
