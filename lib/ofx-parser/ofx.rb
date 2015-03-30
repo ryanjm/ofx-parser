@@ -115,7 +115,7 @@ module OfxParser
   end
 
   class Transaction
-    attr_accessor :type, :date, :amount, :fit_id, :check_number, :sic, :memo, :payee
+    attr_accessor :type, :date, :date_initiated, :amount, :fit_id, :check_number, :sic, :memo, :payee
 
     include MonetarySupport
     extend MonetaryClassSupport
