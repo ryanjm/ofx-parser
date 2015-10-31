@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?><?OFX OFXHEADER="200" VERSION="202" SECURITY="NONE" OLDFILEUID="NONE" NEWFILEUID="NONE"?>
+<OFX>
+  <SIGNONMSGSRSV1>
+    <SONRS>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <DTSERVER>20151027035306.981</DTSERVER>
+      <LANGUAGE>ENG</LANGUAGE>
+      <DTPROFUP>20151027035306.981</DTPROFUP>
+      <FI>
+        <ORG>C1</ORG>
+        <FID>1001</FID>
+      </FI>
+      <INTU.BID>7492</INTU.BID>
+    </SONRS>
+  </SIGNONMSGSRSV1>
+  <CREDITCARDMSGSRSV1>
+    <CCSTMTTRNRS>
+      <TRNUID>0</TRNUID>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <CCSTMTRS>
+        <CURDEF>USD</CURDEF>
+        <CCACCTFROM>
+          <ACCTID>1111</ACCTID>
+        </CCACCTFROM>
+        <BANKTRANLIST>
+          <DTSTART>20150927040000.000</DTSTART>
+          <DTEND>20151026040000.000</DTEND>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20151014040000.000</DTPOSTED>
+            <DTUSER>20151012040000.000</DTUSER>
+            <TRNAMT>-40.0</TRNAMT>
+            <FITID>xx</FITID>
+            <NAME>INTERNATIONAL TEAMS</NAME>
+            <CCACCTTO>
+              <ACCTID>8972</ACCTID>
+            </CCACCTTO>
+            <MEMO>INTERNATIONAL TEAMS</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20151005040000.000</DTPOSTED>
+            <DTUSER>20151005040000.000</DTUSER>
+            <TRNAMT>60.0</TRNAMT>
+            <FITID>yy</FITID>
+            <SIC>5912</SIC>
+            <NAME>CAPITAL ONE AUTOPAY PYMT AuthDate 10-S EP</NAME>
+            <CCACCTTO>
+              <ACCTID>7053</ACCTID>
+            </CCACCTTO>
+            <MEMO>CAPITAL ONE AUTOPAY PYMT AuthDate 10-S EP</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20150929040000.000</DTPOSTED>
+            <DTUSER>20150925040000.000</DTUSER>
+            <TRNAMT>16.3</TRNAMT>
+            <FITID>zz</FITID>
+            <NAME>E 470 EXPRESS TOLLS</NAME>
+            <CCACCTTO>
+              <ACCTID>8972</ACCTID>
+            </CCACCTTO>
+            <MEMO>E 470 EXPRESS TOLLS</MEMO>
+          </STMTTRN>
+        </BANKTRANLIST>
+        <LEDGERBAL>
+          <BALAMT>-63.7</BALAMT>
+          <DTASOF>20151027035306.982</DTASOF>
+        </LEDGERBAL>
+        <AVAILBAL>
+          <BALAMT>9936.3</BALAMT>
+          <DTASOF>20151027035306.982</DTASOF>
+        </AVAILBAL>
+      </CCSTMTRS>
+    </CCSTMTTRNRS>
+  </CREDITCARDMSGSRSV1>
+</OFX>

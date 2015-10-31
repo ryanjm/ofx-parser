@@ -33,16 +33,21 @@ module OfxParser
     def self.pre_process(ofx)
       header, body = ofx.split(/\n{2,}|:?<OFX>/, 2)
 
-      header = Hash[*header.gsub(/^\r?\n+/,'').split(/\r\n/).collect do |e|
-        e.split(/:/,2)
-      end.flatten]
+      h = {}
+      re = /([a-zA-Z]*)(:|\=)"*([a-zA-Z0-9\.\-]*)"*\s*/
+      header.gsub(re).each do
+        h[$1] = $3
+      end
+      # header = Hash[*header.gsub(/^\\r?\\n+/,'').split(/\\r\\n/).collect do |e|
+      #   e.split(/:/,2)
+      # end.flatten]
 
       body.gsub!(/>\s+</m, '><')
       body.gsub!(/\s+</m, '<')
       body.gsub!(/>\s+/m, '>')
       body.gsub!(/<([^>]+?)>([^<]+)/m, '<\1>\2</\1>')
 
-      [header, body]
+      [h, body]
     end
 
     # Takes an OFX datetime string of the format:

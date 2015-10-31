@@ -1,5 +1,6 @@
 require 'test/unit'
 require File.expand_path('../../lib/ofx-parser.rb', __FILE__)
+require 'pry'
 
 class OfxParserTest < Test::Unit::TestCase
 
@@ -344,6 +345,66 @@ class OfxParserTest < Test::Unit::TestCase
     assert_equal nil, transactions[2].sic_desc
     assert_equal 'ELECTRONIC PAYMENT-THANK YOU', transactions[2].payee
     assert_equal '', transactions[2].memo
+
+    assert_equal 1, ofx.accounts.size
+    assert_equal [], ofx.signup_account_info
+  end
+
+  def test_single_credit_card_with_version_200
+    ofx = OfxParser::OfxParser.parse(OFX_FILES[:creditcard_v200])
+
+    acct = silence_warnings { ofx.credit_card }
+
+    assert_equal '1111', acct.number
+    assert_equal '9936.3', acct.remaining_credit
+    assert_equal 993630, acct.remaining_credit_in_pennies
+    assert_equal DateTime.civil(2015,10,27,03,53,06), acct.remaining_credit_date
+    assert_equal '-63.7', acct.balance
+    assert_equal(-6370, acct.balance_in_pennies)
+    assert_equal DateTime.civil(2015,10,27,03,53,06), acct.balance_date
+    assert_equal '0', acct.transaction_uid
+
+    statement = acct.statement
+
+    assert_equal 'USD', statement.currency
+    assert_equal DateTime.civil(2015,9,27,04,00,00), statement.start_date
+    assert_equal DateTime.civil(2015,10,26,04,00,00), statement.end_date
+
+    transactions = statement.transactions
+    assert_equal 3, transactions.size
+
+    assert_equal :DEBIT, transactions[0].type
+    assert_equal OfxParser::Transaction::TYPE[:DEBIT], transactions[0].type_desc
+    assert_equal DateTime.civil(2015,10,14,04,00,00), transactions[0].date
+    assert_equal '-40.0', transactions[0].amount
+    assert_equal(-4000, transactions[0].amount_in_pennies)
+    assert_equal 'xx', transactions[0].fit_id
+    assert_equal nil, transactions[0].check_number
+    assert_equal nil, transactions[0].sic
+    assert_equal 'INTERNATIONAL TEAMS', transactions[0].payee
+    assert_equal 'INTERNATIONAL TEAMS', transactions[0].memo
+
+    assert_equal :CREDIT, transactions[1].type
+    assert_equal OfxParser::Transaction::TYPE[:CREDIT], transactions[1].type_desc
+    assert_equal DateTime.civil(2015,10,05,04,00,00), transactions[1].date
+    assert_equal '60.0', transactions[1].amount
+    assert_equal(6000, transactions[1].amount_in_pennies)
+    assert_equal 'yy', transactions[1].fit_id
+    assert_equal nil, transactions[1].check_number
+    assert_equal '5912', transactions[1].sic
+    assert_equal OfxParser::Mcc::CODES['5912'], transactions[1].sic_desc
+    assert_equal 'CAPITAL ONE AUTOPAY PYMT AuthDate 10-S EP', transactions[1].payee
+    assert_equal 'CAPITAL ONE AUTOPAY PYMT AuthDate 10-S EP', transactions[1].memo
+
+    assert_equal :CREDIT, transactions[2].type
+    assert_equal OfxParser::Transaction::TYPE[:CREDIT], transactions[2].type_desc
+    assert_equal DateTime.civil(2015,9,29,04,00,00), transactions[2].date
+    assert_equal '16.3', transactions[2].amount
+    assert_equal 1630, transactions[2].amount_in_pennies
+    assert_equal 'zz', transactions[2].fit_id
+    assert_equal nil, transactions[2].check_number
+    assert_equal 'E 470 EXPRESS TOLLS', transactions[2].payee
+    assert_equal 'E 470 EXPRESS TOLLS', transactions[2].memo
 
     assert_equal 1, ofx.accounts.size
     assert_equal [], ofx.signup_account_info
